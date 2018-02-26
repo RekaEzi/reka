@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonateCharity", "DonateCharity\DonateCharity.csproj", "{AF46D8CE-D9CE-4685-8EC5-37BED57516E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonateCharity.Tests", "DonateCharity.Tests\DonateCharity.Tests.csproj", "{BF9871FA-4208-4311-AE02-9B07078F4587}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF46D8CE-D9CE-4685-8EC5-37BED57516E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF46D8CE-D9CE-4685-8EC5-37BED57516E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF46D8CE-D9CE-4685-8EC5-37BED57516E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF46D8CE-D9CE-4685-8EC5-37BED57516E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF9871FA-4208-4311-AE02-9B07078F4587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF9871FA-4208-4311-AE02-9B07078F4587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF9871FA-4208-4311-AE02-9B07078F4587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF9871FA-4208-4311-AE02-9B07078F4587}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E46A5643-3470-45D3-9FE1-FF2A6BED7A89}
+	EndGlobalSection
+EndGlobal

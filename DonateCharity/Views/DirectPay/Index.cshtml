@@ -1,0 +1,184 @@
+﻿@using DonateCharity.Models;
+
+@model DonateCharity.Models.DirectPay
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <style>
+        .header {
+            border-width: 0;
+            border-radius: 0;
+            border-bottom-color: transparent;
+            padding: 0;
+            color: ghostwhite;
+            font-size: 3rem;
+        }
+        .button5:hover {
+            background-color: #555555;
+            color: white;
+        }
+        .button {
+            background-color: white;
+            border: none;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            height: 30px;
+            width: 75px;
+        }
+        .form-item {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            margin: 0.6em 0;
+            font-size: 16px;
+            font-family: Arial;
+        }
+    </style>
+    <script>
+        function NumberOnly() {
+            var AsciiValue = event.keyCode
+            if ((AsciiValue >= 48 && AsciiValue <= 57) || (AsciiValue == 8 || AsciiValue == 127))
+                event.returnValue = true;
+            else
+                event.returnValue = false;
+        }</script>
+</head>
+<body style=" background-color:cadetblue; margin-left: 200px; margin-right: 100px;" class="form-group">
+
+    <h1 class="header">Donate to Sea Shepherds</h1>
+    </br>
+    @using (Html.BeginForm("PaymentDetails", "DirectPay", FormMethod.Post))
+    {
+        <fieldset id="donatedetails">
+            <div class="form-item">
+                <span style="width:200px"> @Html.Label("Payment Frequency")</span>
+                <select name="frequency">
+                    <option value="once">Once</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Fortnightly">Fortnightly</option>
+                    <option value="Monthly">Monthly</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="txt-charities" style="width:200px">Select Charity</label>
+                <select name="txt-charity">
+                    <option val="c1">Charity1</option>
+                    <option val="c2">charity2</option>
+                    <option val="C3">Charity3</option>
+                </select>
+
+            </div>
+            <div class="form-item">
+                <span style="width:200px"> @Html.Label("donating", "You're donating*(AUD)")</span>
+                <span>
+                    @Html.TextBoxFor(model => model.TotalAmount)
+                    <span style="color:red">  @Html.ValidationMessageFor(model => model.TotalAmount)</span>
+                </span>
+            </div>
+            
+        </fieldset>
+        <div class="form-item"><input type="checkbox" name="Subscribe" id="Subscribe"><label for="Subscribe">Subscribe for the newsletter</label></div>
+        <br />
+        <fieldset id="persondetails">
+                <div class="form-item">
+                    <label for="fields-title" style="width:150px">Title</label><span></span>
+                    <select name="txt-title" title="Please select the title">
+                        <option value="">Title</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                </div>
+                
+                <div class="form-item">
+                    <label for="txt-fname" style="width:150px">First Name</label>
+                    @Html.TextBoxFor(model => model.FirstName)
+                </div>
+               
+                <div class="form-item">
+                    <label for="txt-lname" style="width:150px">Last name</label>
+                    @Html.TextBoxFor(model => model.LastName)
+                </div>
+                
+                <div class="form-item">
+                    <label for="txt-email" style="width:150px">Email*</label>
+                    @Html.TextBoxFor(model => model.Email)
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Email)</span>    
+                </div>
+            
+        </fieldset>
+        <div class="form-item"><input type="checkbox" name="Remember" id="Remember"><label for="Remember">Remember me next time</label></div>
+        <fieldset id="creditcardetails">
+            <div class="form-item">
+                <label for="txt-creditcardname" style="width:150px">Name on Card*</label>
+                @Html.TextBoxFor(model => model.CardName)
+                <span style="color:red"> @Html.ValidationMessageFor(model => model.CardName)</span>
+            </div>
+            <div class="form-item">
+                <label for="txt-creditcardnumber" style="width:150px">Card Number*</label>
+                @Html.TextBoxFor(model => model.CardNumber)
+                <span style="color:red"> @Html.ValidationMessageFor(model => model.CardNumber)</span>
+            </div>
+            <div class="form-item">
+                <label for="txt-cardexpirydate" style="width:150px">Expiry Date*</label>
+                <select name="txt-cardmonth" required>
+                    <option val="01">01</option>
+                    <option val="02">02</option>
+                    <option val="03">03</option>
+                    <option val="04">04</option>
+                    <option val="05">05</option>
+                    <option val="06">06</option>
+                    <option val="07">07</option>
+                    <option val="08">08</option>
+                    <option val="09">09</option>
+                    <option val="10">10</option>
+                    <option val="11">11</option>
+                    <option val="12">12</option>
+                </select>
+                <select name="txt-cardyear" required>
+                    <option val="2018">2018</option>
+                    <option val="2019">2019</option>
+                    <option val="2020">2020</option>
+                    <option val="2021">2021</option>
+                    <option val="2022">2022</option>
+                    <option val="2023">2023</option>
+                    <option val="2024">2024</option>
+                    <option val="2025">2025</option>
+                    <option val="2026">2026</option>
+                    <option val="2027">2027</option>
+                    <option val="2028">2028</option>
+                    <option val="2029">2029</option>
+                    <option val="2030">2030</option>
+                    <option val="2031">2031</option>
+                    <option val="2032">2032</option>
+                    <option val="2033">2033</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="txt-cardcvv" style="width:150px">CVV*</label>
+                @Html.TextBoxFor(model => model.CVN)
+                <span style="color:red">
+                    @Html.ValidationMessageFor(model => model.CVN)</span>
+                    <span class="description">Enter CVV <a href="https://donateplanet.com/ajax/cvv/" class="help ajax lightbox">?</a></span>
+            </div>
+        </fieldset>
+        <br />
+        <div style="text-align:center;"><button class="button button5"> Donate</button></div>
+    }
+</body>
+</html>
